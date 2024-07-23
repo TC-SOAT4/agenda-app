@@ -35,7 +35,13 @@ public class AgendaEntity {
     private LocalDate dia;
     private UUID idMedico;
 
+    private Boolean ativo;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "agenda")
     private List<HorarioEntity> horarios;
+
+    public void setAgendaNosHorarios() {
+        horarios.forEach(horario -> horario.setAgenda(this));
+    }
 
 }

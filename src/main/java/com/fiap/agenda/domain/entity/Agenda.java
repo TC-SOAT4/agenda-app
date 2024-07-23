@@ -24,6 +24,8 @@ public class Agenda {
     private LocalDate dia;
     private UUID idMedico;
 
+    private Boolean ativo;
+
     private List<Horario> horarios;
 
 }

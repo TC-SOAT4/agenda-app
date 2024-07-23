@@ -11,7 +11,7 @@ CREATE TABLE horario (
     idAgenda UUID NOT NULL,
     inicio TIME NOT NULL,
     fim TIME NOT NULL,
-    disponivel BOOLEAN,
+    disponivel BOOLEAN NOT NULL DEFAULT TRUE,
     FOREIGN KEY (idAgenda) REFERENCES agenda(idAgenda),
     PRIMARY KEY(idHorario)
 );
