@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fiap.agenda.application.medico.controller.dto.AgendaResponseDTO;
 import com.fiap.agenda.application.medico.controller.dto.AlterarAgendaDTO;
 import com.fiap.agenda.application.medico.controller.dto.CadastrarAgendaDTO;
+import com.fiap.agenda.application.medico.messages.RealizarAgendamentoSQS;
 import com.fiap.agenda.domain.usecase.IAlterarAgenda;
 import com.fiap.agenda.domain.usecase.IBuscarAgendaPorMedicoDia;
 import com.fiap.agenda.domain.usecase.ICadastrarAgenda;
@@ -43,6 +44,8 @@ public class AgendaController {
     private final IBuscarAgendaPorMedicoDia buscarAgendaPorMedicoDia;
     private final IConfirmarAgendamento confirmarAgendamento;
     private final IAlterarAgenda alterarAgenda;
+    //TODO
+    private final RealizarAgendamentoSQS realizarAgendamentoSQS;
 
     @PreAuthorize("hasRole('PACIENTE') or hasRole('MEDICO')")
     @Operation(summary = "Buscar por Médico/Dia", description = "Listar agenda do medico para o dia informado")
