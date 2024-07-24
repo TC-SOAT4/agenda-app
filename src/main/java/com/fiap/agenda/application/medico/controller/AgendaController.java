@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +42,7 @@ public class AgendaController {
     private final IConfirmarAgendamento confirmarAgendamento;
     private final IAlterarAgenda alterarAgenda;
 
+    @PreAuthorize("hasRole('PACIENTE') or hasRole('MEDICO')")
     @Operation(summary = "Buscar por Médico/Dia", description = "Listar agenda do medico para o dia informado")
     @GetMapping
     public ResponseEntity<List<AgendaResponseDTO>> buscarPorMedico(
@@ -49,12 +51,14 @@ public class AgendaController {
         return ResponseEntity.ok(buscarAgendaPorMedicoDia.executar(idMedico, data));
     }
 
+    @PreAuthorize("hasRole('MEDICO')")
     @Operation(summary = "Criar Agenda", description = "Criar uma agenda com os horários disponíveis")
     @PostMapping
     public ResponseEntity<AgendaResponseDTO> criar(@Valid @RequestBody CadastrarAgendaDTO cadastrarAgendaDTO) {
         return ResponseEntity.ok(cadastrarAgenda.executar(cadastrarAgendaDTO));
     }
 
+    @PreAuthorize("hasRole('MEDICO')")
     @Operation(summary = "Alterar Agenda", description = "Alterar uma agenda é os horários disponíveis")
     @PutMapping("/{idAgenda}")
     public ResponseEntity<AgendaResponseDTO> alterar(@PathVariable("idAgenda") UUID idAgenda,
@@ -62,6 +66,7 @@ public class AgendaController {
         return ResponseEntity.ok(alterarAgenda.executar(idAgenda, alterarAgendaDTO));
     }
 
+    @PreAuthorize("hasRole('PACIENTE')")
     @Operation(summary = "Confirmar Horario", description = "Confirma horario de agendamento previamente realizado")
     @PostMapping("/{idAgenda}/horarios/{idHorario}")
     public ResponseEntity<Object> confirmarAgendamento(@PathVariable("idAgenda") UUID idAgenda,

@@ -3,6 +3,7 @@ package com.fiap.agenda.conf;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -13,9 +14,11 @@ import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
+    private final CustomJwtAuthenticationConverter authenticationConverter;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -24,14 +27,13 @@ public class SecurityConfiguration {
             .cors(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authz -> authz.requestMatchers("/", "/swagger-ui/**", "/v3/api-docs/**", "/actuator/**")
                 .permitAll()
-                .requestMatchers("private/**").hasAnyRole("MEDICOS")
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
                 )
-        //         .oauth2ResourceServer(oauth2 ->oauth2
-        //         .jwt(jwt -> 
-        //                     jwt.jwtAuthenticationConverter(authenticationConverter) // Necessary to convert AWS Cognito claim "cognito:groups" into ROLES
-        //         )
-        // )
+                .oauth2ResourceServer(oauth2 ->oauth2
+                .jwt(jwt -> 
+                            jwt.jwtAuthenticationConverter(authenticationConverter) // Necessary to convert AWS Cognito claim "cognito:groups" into ROLES
+                )
+        )
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         return http.build();
     }
