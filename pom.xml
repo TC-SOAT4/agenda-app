@@ -35,6 +35,13 @@
 		<sonar.organization>tc-soat4</sonar.organization>
 		<sonar.projectKey>TC-SOAT4_agenda-app</sonar.projectKey>
 	</properties>
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/TC-SOAT4/agenda-app</url>
+		</repository>
+	</distributionManagement>
 	<dependencies>
 
 		<dependency>
