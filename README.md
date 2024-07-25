@@ -17,3 +17,8 @@ https://9l6e6av4i5.execute-api.us-east-1.amazonaws.com/Prod/auth?username={}&pas
 
 ```
 
+- Cadastro/Edição de Horários Disponíveis (Médico)
+- Agendamento de Consultas (Paciente)
+    - Lista horarios por dia/médico
+
+

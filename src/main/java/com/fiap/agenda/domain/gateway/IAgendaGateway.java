@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.fiap.agenda.domain.entity.Agenda;
+import com.fiap.agenda.domain.entity.Horario;
 
 public interface IAgendaGateway {
 
@@ -13,4 +14,5 @@ public interface IAgendaGateway {
     public List<Agenda> buscarPorMedicoDia(UUID idMedico, LocalDate dia);
     public void confirmarAgendamento(UUID idAgenda, Long idHorario);
     public Agenda buscarPorId(UUID idAgenda);
+    public Horario buscarHorarioPorIdAndMedico(Long idHorario, UUID idMedico);
 }

@@ -8,9 +8,12 @@ import org.mapstruct.ReportingPolicy;
 import com.fiap.agenda.application.medico.controller.dto.AgendaResponseDTO;
 import com.fiap.agenda.application.medico.controller.dto.AlterarHorarioDTO;
 import com.fiap.agenda.application.medico.controller.dto.CadastrarAgendaDTO;
+import com.fiap.agenda.application.medico.controller.dto.NovoAgendamentoConsultaDTO;
 import com.fiap.agenda.domain.entity.Agenda;
+import com.fiap.agenda.domain.entity.AgendamentoConsulta;
 import com.fiap.agenda.domain.entity.Horario;
 import com.fiap.agenda.infra.persistence.entity.AgendaEntity;
+import com.fiap.agenda.infra.persistence.entity.HorarioEntity;
 
 @Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface AgendaMapper {
@@ -28,5 +31,9 @@ public interface AgendaMapper {
     public List<AgendaResponseDTO> toAgendaResponseDTOList(List<Agenda> list);
 
     public Horario toHorario(AlterarHorarioDTO horarioEncontrado);
+
+    public AgendamentoConsulta toAgendamentoConsulta(NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO);
+
+    public Horario toHorario(HorarioEntity horarioEntity);
 
 }

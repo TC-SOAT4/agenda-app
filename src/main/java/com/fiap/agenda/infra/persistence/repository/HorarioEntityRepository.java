@@ -10,4 +10,6 @@ public interface HorarioEntityRepository extends JpaRepository<HorarioEntity, Lo
 
     HorarioEntity findByIdHorarioAndAgendaIdAgenda(Long idHorario, UUID idAgenda);
 
+    HorarioEntity findByIdHorarioAndAgendaIdMedico(Long idHorario, UUID idMedico);
+
 }

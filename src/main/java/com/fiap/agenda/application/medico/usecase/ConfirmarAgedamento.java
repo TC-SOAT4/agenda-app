@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Component
 public class ConfirmarAgedamento implements IConfirmarAgendamento {
 
-     private final IAgendaGateway agendaGateway;
+    private final IAgendaGateway agendaGateway;
 
     @Override
     public void executar(UUID idAgenda, Long idHorario) {

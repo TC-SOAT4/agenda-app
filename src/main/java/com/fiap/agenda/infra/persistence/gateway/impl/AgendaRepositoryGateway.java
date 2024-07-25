@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Component;
 
 import com.fiap.agenda.domain.entity.Agenda;
+import com.fiap.agenda.domain.entity.Horario;
 import com.fiap.agenda.domain.gateway.IAgendaGateway;
 import com.fiap.agenda.exceptions.HorarioNaoEncontradoException;
 import com.fiap.agenda.infra.persistence.mapper.AgendaMapper;
@@ -66,6 +67,12 @@ public class AgendaRepositoryGateway implements IAgendaGateway {
     public Agenda buscarPorId(UUID idAgenda) {
         var agendaEntity = agendaEntityRepository.findById(idAgenda).orElseThrow();
         return agendaMapper.toAgenda(agendaEntity);
+    }
+
+    @Override
+    public Horario buscarHorarioPorIdAndMedico(Long idHorario, UUID idMedico) {
+        var horarioEntity = horarioEntityRepository.findByIdHorarioAndAgendaIdMedico(idHorario, idMedico);
+        return agendaMapper.toHorario(horarioEntity);
     }
 
 }

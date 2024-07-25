@@ -20,7 +20,7 @@ public class Horario {
 
     private Long idHorario;
 
-    private UUID idAgenda;
+    private Agenda agenda;
 
     private LocalTime inicio;
     private LocalTime fim;
