@@ -3,6 +3,8 @@ package com.fiap.agenda.infra.persistence.mapper;
 import java.util.List;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 
 import com.fiap.agenda.application.medico.controller.dto.AgendaResponseDTO;
@@ -22,10 +24,12 @@ public interface AgendaMapper {
 
     public AgendaEntity toAgendaEntity(Agenda agenda);
 
+    @Mapping(target = "horarios", qualifiedByName="toHorarioIgoneAgenda")
     public Agenda toAgenda(AgendaEntity agendaEntity);
 
     public AgendaResponseDTO toAgendaResponseDTO(Agenda agenda);
 
+    @Mapping(target = "horarios")
     public List<Agenda> toAgendaList(List<AgendaEntity> list);
 
     public List<AgendaResponseDTO> toAgendaResponseDTOList(List<Agenda> list);
@@ -35,5 +39,9 @@ public interface AgendaMapper {
     public AgendamentoConsulta toAgendamentoConsulta(NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO);
 
     public Horario toHorario(HorarioEntity horarioEntity);
+
+    @Named("toHorarioIgoneAgenda")
+    @Mapping(target = "agenda", ignore = true)
+    public Horario toHorarioIgoneAgenda(HorarioEntity horarioEntity);
 
 }

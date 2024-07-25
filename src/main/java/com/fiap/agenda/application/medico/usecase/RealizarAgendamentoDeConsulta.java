@@ -3,6 +3,7 @@ package com.fiap.agenda.application.medico.usecase;
 import org.springframework.stereotype.Component;
 
 import com.fiap.agenda.application.medico.controller.dto.NovoAgendamentoConsultaDTO;
+import com.fiap.agenda.conf.AuthenticationFacade;
 import com.fiap.agenda.domain.gateway.IAgendaGateway;
 import com.fiap.agenda.domain.messaging.IAgendamentoConsultaQueueAdapter;
 import com.fiap.agenda.domain.usecase.IRealizarAgendamentoDeConsulta;
@@ -21,6 +22,8 @@ public class RealizarAgendamentoDeConsulta implements IRealizarAgendamentoDeCons
 
     private final AgendaMapper agendaMapper;
 
+    private final AuthenticationFacade authenticationFacade;
+
     @Override
     public void executar(NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO) {
 
@@ -28,6 +31,9 @@ public class RealizarAgendamentoDeConsulta implements IRealizarAgendamentoDeCons
 
         if(horario == null)
             throw new HorarioNaoEncontradoException();
+
+        var usernamePaciente = authenticationFacade.getAuthentication().getName();
+        //TODO Buscar UUID do paciente
 
         var agendamentoConsulta = agendaMapper.toAgendamentoConsulta(novoAgendamentoConsultaDTO);
         agendamentoConsulta.setIdPaciente(null);

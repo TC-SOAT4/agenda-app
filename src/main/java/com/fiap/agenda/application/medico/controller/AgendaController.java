@@ -44,7 +44,7 @@ public class AgendaController {
     private final IConfirmarAgendamento confirmarAgendamento;
     private final IAlterarAgenda alterarAgenda;
 
-    @PreAuthorize("hasRole('PACIENTE') or hasRole('MEDICO')")
+    @PreAuthorize("hasRole('PACIENTE')")
     @Operation(summary = "Buscar por Médico/Dia", description = "Listar agenda do medico para o dia informado")
     @GetMapping
     public ResponseEntity<List<AgendaResponseDTO>> buscarPorMedico(

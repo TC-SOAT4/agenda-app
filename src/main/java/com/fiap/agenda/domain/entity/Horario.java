@@ -1,7 +1,6 @@
 package com.fiap.agenda.domain.entity;
 
 import java.time.LocalTime;
-import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
