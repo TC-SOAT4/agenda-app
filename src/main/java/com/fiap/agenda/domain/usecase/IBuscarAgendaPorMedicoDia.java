@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import com.fiap.agenda.application.medico.controller.dto.AgendaResponseDTO;
+import com.fiap.agenda.application.controller.dto.AgendaResponseDTO;
 
 public interface IBuscarAgendaPorMedicoDia {
 

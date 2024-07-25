@@ -1,4 +1,4 @@
-package com.fiap.agenda.application.medico.controller;
+package com.fiap.agenda.application.controller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fiap.agenda.application.medico.controller.dto.AgendaResponseDTO;
-import com.fiap.agenda.application.medico.controller.dto.AlterarAgendaDTO;
-import com.fiap.agenda.application.medico.controller.dto.CadastrarAgendaDTO;
+import com.fiap.agenda.application.controller.dto.AgendaResponseDTO;
+import com.fiap.agenda.application.controller.dto.AlterarAgendaDTO;
+import com.fiap.agenda.application.controller.dto.CadastrarAgendaDTO;
 import com.fiap.agenda.domain.usecase.IAlterarAgenda;
 import com.fiap.agenda.domain.usecase.IBuscarAgendaPorMedicoDia;
 import com.fiap.agenda.domain.usecase.ICadastrarAgenda;

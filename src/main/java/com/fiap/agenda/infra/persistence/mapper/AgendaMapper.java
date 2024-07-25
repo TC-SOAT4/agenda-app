@@ -7,10 +7,10 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 
-import com.fiap.agenda.application.medico.controller.dto.AgendaResponseDTO;
-import com.fiap.agenda.application.medico.controller.dto.AlterarHorarioDTO;
-import com.fiap.agenda.application.medico.controller.dto.CadastrarAgendaDTO;
-import com.fiap.agenda.application.medico.controller.dto.NovoAgendamentoConsultaDTO;
+import com.fiap.agenda.application.controller.dto.AgendaResponseDTO;
+import com.fiap.agenda.application.controller.dto.AlterarHorarioDTO;
+import com.fiap.agenda.application.controller.dto.CadastrarAgendaDTO;
+import com.fiap.agenda.application.controller.dto.NovoAgendamentoConsultaDTO;
 import com.fiap.agenda.domain.entity.Agenda;
 import com.fiap.agenda.domain.entity.AgendamentoConsulta;
 import com.fiap.agenda.domain.entity.Horario;

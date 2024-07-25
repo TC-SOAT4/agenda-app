@@ -1,8 +1,8 @@
-package com.fiap.agenda.application.medico.usecase;
+package com.fiap.agenda.application.usecase;
 
 import org.springframework.stereotype.Component;
 
-import com.fiap.agenda.application.medico.controller.dto.NovoAgendamentoConsultaDTO;
+import com.fiap.agenda.application.controller.dto.NovoAgendamentoConsultaDTO;
 import com.fiap.agenda.conf.AuthenticationFacade;
 import com.fiap.agenda.domain.gateway.IAgendaGateway;
 import com.fiap.agenda.domain.messaging.IAgendamentoConsultaQueueAdapter;

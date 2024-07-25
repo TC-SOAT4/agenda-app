@@ -1,4 +1,4 @@
-package com.fiap.agenda.application.medico.controller.dto;
+package com.fiap.agenda.application.controller.dto;
 
 import java.util.List;
 

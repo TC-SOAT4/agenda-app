@@ -1,4 +1,4 @@
-package com.fiap.agenda.application.medico.controller;
+package com.fiap.agenda.application.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fiap.agenda.application.medico.controller.dto.AgendaResponseDTO;
-import com.fiap.agenda.application.medico.controller.dto.NovoAgendamentoConsultaDTO;
+import com.fiap.agenda.application.controller.dto.AgendaResponseDTO;
+import com.fiap.agenda.application.controller.dto.NovoAgendamentoConsultaDTO;
 import com.fiap.agenda.domain.usecase.IRealizarAgendamentoDeConsulta;
 
 import io.swagger.v3.oas.annotations.Operation;

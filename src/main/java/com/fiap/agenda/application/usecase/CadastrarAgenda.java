@@ -1,11 +1,11 @@
-package com.fiap.agenda.application.medico.usecase;
+package com.fiap.agenda.application.usecase;
 
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
-import com.fiap.agenda.application.medico.controller.dto.AgendaResponseDTO;
-import com.fiap.agenda.application.medico.controller.dto.CadastrarAgendaDTO;
+import com.fiap.agenda.application.controller.dto.AgendaResponseDTO;
+import com.fiap.agenda.application.controller.dto.CadastrarAgendaDTO;
 import com.fiap.agenda.domain.gateway.IAgendaGateway;
 import com.fiap.agenda.domain.usecase.ICadastrarAgenda;
 import com.fiap.agenda.infra.persistence.mapper.AgendaMapper;

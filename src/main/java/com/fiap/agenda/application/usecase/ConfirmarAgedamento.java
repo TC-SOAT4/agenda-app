@@ -1,4 +1,4 @@
-package com.fiap.agenda.application.medico.usecase;
+package com.fiap.agenda.application.usecase;
 
 import java.util.UUID;
 

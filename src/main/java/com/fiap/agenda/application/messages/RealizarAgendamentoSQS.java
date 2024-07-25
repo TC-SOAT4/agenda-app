@@ -1,4 +1,4 @@
-package com.fiap.agenda.application.medico.messages;
+package com.fiap.agenda.application.messages;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.support.MessageBuilder;

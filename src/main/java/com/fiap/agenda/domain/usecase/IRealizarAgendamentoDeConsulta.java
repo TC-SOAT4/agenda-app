@@ -1,6 +1,6 @@
 package com.fiap.agenda.domain.usecase;
 
-import com.fiap.agenda.application.medico.controller.dto.NovoAgendamentoConsultaDTO;
+import com.fiap.agenda.application.controller.dto.NovoAgendamentoConsultaDTO;
 
 public interface IRealizarAgendamentoDeConsulta {
 
