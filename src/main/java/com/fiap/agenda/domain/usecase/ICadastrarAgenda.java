@@ -5,6 +5,6 @@ import com.fiap.agenda.application.controller.dto.CadastrarAgendaDTO;
 
 public interface ICadastrarAgenda {
 
-    public AgendaResponseDTO executar(CadastrarAgendaDTO cadastrarAgendaDTO);
+    public AgendaResponseDTO executar(CadastrarAgendaDTO cadastrarAgendaDTO, String bearerToken);
     
 }

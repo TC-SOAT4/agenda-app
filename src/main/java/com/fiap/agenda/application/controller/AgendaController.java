@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,8 +57,9 @@ public class AgendaController {
     @PreAuthorize("hasRole('MEDICO')")
     @Operation(summary = "Criar Agenda", description = "Criar uma agenda com os horários disponíveis")
     @PostMapping
-    public ResponseEntity<AgendaResponseDTO> criar(@Valid @RequestBody CadastrarAgendaDTO cadastrarAgendaDTO) {
-        return ResponseEntity.ok(cadastrarAgenda.executar(cadastrarAgendaDTO));
+    public ResponseEntity<AgendaResponseDTO> criar(@Valid @RequestBody CadastrarAgendaDTO cadastrarAgendaDTO, @RequestHeader("Authorization") String bearerToken) {
+       
+        return ResponseEntity.ok(cadastrarAgenda.executar(cadastrarAgendaDTO, bearerToken));
     }
 
     @PreAuthorize("hasRole('MEDICO')")

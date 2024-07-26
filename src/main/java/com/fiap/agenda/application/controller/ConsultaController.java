@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,8 +33,8 @@ public class ConsultaController {
     @PreAuthorize("hasRole('PACIENTE')")
     @Operation(summary = "Agendar Consulta", description = "Agendar uma nova consulta")
     @PostMapping
-    public ResponseEntity<AgendaResponseDTO> agendar(@Valid @RequestBody NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO) {
-        realizarAgendamentoDeConsulta.executar(novoAgendamentoConsultaDTO);
+    public ResponseEntity<AgendaResponseDTO> agendar(@Valid @RequestBody NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO, @RequestHeader("Authorization") String bearerToken) {
+        realizarAgendamentoDeConsulta.executar(novoAgendamentoConsultaDTO, bearerToken);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
