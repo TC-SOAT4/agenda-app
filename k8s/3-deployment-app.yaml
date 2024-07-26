@@ -51,6 +51,11 @@ spec:
                 configMapKeyRef:
                   name: configmap-agenda-app
                   key: URI_API_BUSCAR_MEDICO
+            - name: URI_API_PACIENTE
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-agenda-app
+                  key: URI_API_PACIENTE
             - name: AWS_SQS_URI
               valueFrom:
                 configMapKeyRef:

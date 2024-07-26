@@ -15,6 +15,7 @@ import com.fiap.agenda.application.controller.dto.NovoAgendamentoConsultaDTO;
 import com.fiap.agenda.domain.usecase.IRealizarAgendamentoDeConsulta;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -33,7 +34,7 @@ public class ConsultaController {
     @PreAuthorize("hasRole('PACIENTE')")
     @Operation(summary = "Agendar Consulta", description = "Agendar uma nova consulta")
     @PostMapping
-    public ResponseEntity<AgendaResponseDTO> agendar(@Valid @RequestBody NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO, @RequestHeader("Authorization") String bearerToken) {
+    public ResponseEntity<AgendaResponseDTO> agendar(@Valid @RequestBody NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO,  @Schema(hidden=true) @RequestHeader("Authorization") String bearerToken) {
         realizarAgendamentoDeConsulta.executar(novoAgendamentoConsultaDTO, bearerToken);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

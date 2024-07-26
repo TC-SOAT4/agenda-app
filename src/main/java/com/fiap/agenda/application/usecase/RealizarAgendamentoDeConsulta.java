@@ -1,12 +1,10 @@
 package com.fiap.agenda.application.usecase;
 
-import java.util.UUID;
-
 import org.springframework.stereotype.Component;
 
 import com.fiap.agenda.application.controller.dto.NovoAgendamentoConsultaDTO;
 import com.fiap.agenda.conf.AuthenticationFacade;
-import com.fiap.agenda.domain.client.IBuscarMedicoAppClient;
+import com.fiap.agenda.domain.client.IPacienteClient;
 import com.fiap.agenda.domain.gateway.IAgendaGateway;
 import com.fiap.agenda.domain.messaging.IAgendamentoConsultaQueueAdapter;
 import com.fiap.agenda.domain.usecase.IRealizarAgendamentoDeConsulta;
@@ -25,9 +23,9 @@ public class RealizarAgendamentoDeConsulta implements IRealizarAgendamentoDeCons
 
     private final AgendaMapper agendaMapper;
 
-    private final IBuscarMedicoAppClient buscarMedicoAppClient;
-
     private final AuthenticationFacade authenticationFacade;
+
+    private final IPacienteClient pacienteClient;
 
     @Override
     public void executar(NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO, String bearerToken) {
@@ -38,12 +36,11 @@ public class RealizarAgendamentoDeConsulta implements IRealizarAgendamentoDeCons
         if (horario == null)
             throw new HorarioNaoEncontradoException();
 
-        // TODO Buscar dados dos pacientes
-
-        var idPaciente = UUID.fromString("6f46f44c-f4d4-4b2b-acee-95d1558d037f");
+        var cpf = authenticationFacade.getAuthentication().getName();
+        var paciente = pacienteClient.buscarPacienteByCpf(cpf, bearerToken);
 
         var agendamentoConsulta = agendaMapper.toAgendamentoConsulta(novoAgendamentoConsultaDTO);
-        agendamentoConsulta.setIdPaciente(idPaciente);
+        agendamentoConsulta.setIdPaciente(paciente.getId());
         agendamentoConsulta.setInicio(horario.getInicio());
         agendamentoConsulta.setFim(horario.getInicio());
         agendamentoConsulta.setDia(horario.getAgenda().getDia());
