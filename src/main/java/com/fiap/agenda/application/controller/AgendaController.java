@@ -57,7 +57,7 @@ public class AgendaController {
     @PreAuthorize("hasRole('MEDICO')")
     @Operation(summary = "Criar Agenda", description = "Criar uma agenda com os horários disponíveis")
     @PostMapping
-    public ResponseEntity<AgendaResponseDTO> criar(@Valid @RequestBody CadastrarAgendaDTO cadastrarAgendaDTO, @RequestHeader("Authorization") String bearerToken) {
+    public ResponseEntity<AgendaResponseDTO> criar(@Valid @RequestBody CadastrarAgendaDTO cadastrarAgendaDTO, @Schema(hidden=true) @RequestHeader("Authorization") String bearerToken) {
        
         return ResponseEntity.ok(cadastrarAgenda.executar(cadastrarAgendaDTO, bearerToken));
     }
