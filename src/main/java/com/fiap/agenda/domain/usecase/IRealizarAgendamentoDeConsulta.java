@@ -4,6 +4,6 @@ import com.fiap.agenda.application.controller.dto.NovoAgendamentoConsultaDTO;
 
 public interface IRealizarAgendamentoDeConsulta {
 
-    public void executar(NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO);
+    public void executar(NovoAgendamentoConsultaDTO novoAgendamentoConsultaDTO, String bearerToken);
 
 }

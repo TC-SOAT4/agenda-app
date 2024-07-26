@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-agenda-deployment
+  labels:
+    app: app-agenda-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: app-agenda-pod
+  template:
+    metadata:
+      name: app-agenda-pod
+      labels:
+        app: app-agenda-pod
+    spec:
+      containers:
+        - name: agenda-app
+          image: thiagobsn/agenda-app
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-agenda-app
+                  key: SPRING_DATASOURCE_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: secret-db
+                  key: username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret-db
+                  key: password
+            - name: SPRING_JPA_SHOW
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-agenda-app
+                  key: SPRING_JPA_SHOW
+            - name: SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-agenda-app
+                  key: SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL
+            - name: URI_API_BUSCAR_MEDICO
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-agenda-app
+                  key: URI_API_BUSCAR_MEDICO
+            - name: AWS_SQS_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-agenda-app
+                  key: AWS_SQS_URI
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-aws
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-aws
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: AWS_SESSION_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-aws
+                  key: AWS_SESSION_TOKEN
+          livenessProbe:
+            httpGet:
+              path: /agenda-app/actuator/health
+              port: 8080
+            initialDelaySeconds: 80
+            periodSeconds: 3
+            failureThreshold: 3
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: 1000m
+            requests:
+              cpu: 500m
+              memory: 256Mi
+      

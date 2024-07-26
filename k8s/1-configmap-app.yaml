@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-agenda-app
+data:
+  SPRING_DATASOURCE_URL: jdbc:mariadb://rds-fiap-hackathon.cktpwpbhuxkf.us-east-1.rds.amazonaws.com:3306/agendadb
+  SPRING_JPA_SHOW: "true"
+  SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+  AWS_SQS_URI: https://sqs.us-east-1.amazonaws.com/354919765289/agendamento-consulta.fifo
+  URI_API_BUSCAR_MEDICO: http://svc-pagamento-app/pagamento-app/pagamentos
