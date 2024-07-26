@@ -140,7 +140,7 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/agenda-app:latest
   
- eks:
+  eks:
     
     name: EKS - Deployment
     runs-on: ubuntu-latest
