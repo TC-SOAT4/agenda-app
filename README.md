@@ -8,9 +8,11 @@ Projeto responsável pela gestão de horários da agenda dos médicos. No projet
 
 **Tecnologias**: 
  - Projeto em Java 17 
- - Spring-boot 3 Mariadb
- -  Path: /agenda-app
--   Porta: 8080
+ - Spring-boot 3
+ - Mariadb
+ - SQS
+ - Path: /agenda-app
+ - Porta: 8080
  
 
 **Pipeline** 
