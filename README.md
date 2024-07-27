@@ -9,7 +9,9 @@ Projeto responsável pela gestão de horários da agenda dos médicos. No projet
 **Tecnologias**: 
  - Projeto em Java 17 
  - Spring-boot 3 Mariadb
- - Criação do banco de dados
+ -  Path: /agenda-app
+-   Porta: 8080
+ 
 
 **Pipeline** 
 -	Testes -> Sonar -> Build -> Docker -> Deploy no EKS
@@ -33,3 +35,7 @@ https://usuarios-lanchonete-app.auth.us-east-1.amazoncognito.com/oauth2/authoriz
 https://9l6e6av4i5.execute-api.us-east-1.amazonaws.com/Prod/auth?username={}&password={}
 
 ```
+
+**Swagger**
+
+[Link Swagger](http://localhost:8080/agenda-app/swagger-ui/swagger-ui/index.html)
