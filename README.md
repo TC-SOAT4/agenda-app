@@ -38,4 +38,4 @@ https://9l6e6av4i5.execute-api.us-east-1.amazonaws.com/Prod/auth?username={}&pas
 
 **Swagger**
 
-[Link Swagger](http://localhost:8080/agenda-app/swagger-ui/swagger-ui/index.html)
+[Link Swagger](http://localhost:8080/agenda-app/swagger-ui/index.html)
